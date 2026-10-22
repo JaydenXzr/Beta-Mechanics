@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111820">
+    <meta name="description" content="Get in touch with Beta Mechanic and tell us about the cars you love.">
+    <title>Beta Mechanic | Contact the Garage</title>
+    <link rel="icon" href="assets/images/bl8watermark.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <script src="site.js" defer></script>
+</head>
+<body class="site-page contact-page">
+    <header class="site-header">
+        <nav class="site-nav" aria-label="Main navigation">
+            <a class="site-brand" href="index.html" aria-label="Beta Mechanic home">
+                <span class="brand-mark" aria-hidden="true">B<span>M</span></span>
+                <span class="brand-name">BETA<span>MECHANIC</span></span>
+            </a>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-links">
+                <span></span><span></span><span></span>
+                <span class="visually-hidden">Toggle navigation</span>
+            </button>
+            <ul class="nav-links" id="primary-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="cars.html">Cars</a></li>
+                <li><a href="guide.html">Guide</a></li>
+                <li><a href="contact.html" aria-current="page">Contact</a></li>
+                <li><a class="nav-cta" href="test1.htm">Test Drive</a></li>
+            </ul>
+        </nav>
+        <div class="header-showcase">
+            <p class="eyebrow"><span class="status-dot"></span> The conversation starts here</p>
+            <h1>Talk shop.<br><span>Talk cars.</span></h1>
+            <p class="showcase-copy">Got a dream garage, a design question, or a machine we need to know about? Drop us a note.</p>
+            <div class="showcase-actions">
+                <a class="button-link button-primary" href="#message-form">Write a message <span aria-hidden="true">↓</span></a>
+                <a class="text-link" href="gallery.html">Browse the garage <span aria-hidden="true">↗</span></a>
+            </div>
+            <span class="hero-index" aria-hidden="true">03 / 03</span>
+        </div>
+        <div class="header-meta" aria-label="Site motto">
+            <span>GOOD CARS. GOOD CONVERSATIONS.</span><span>WE'RE ALL EARS</span>
+        </div>
+    </header>
+
+    <main>
+        <section class="contact-layout content-wrap" id="message-form">
+            <div class="contact-aside">
+                <p class="eyebrow">Your pit lane to us</p>
+                <h2>Let's get<br><span>into it.</span></h2>
+                <p>We’re always up for a conversation about great design, interesting engineering, and the cars that make you stop mid-scroll.</p>
+                <div class="contact-note">
+                    <span class="note-icon" aria-hidden="true">↗</span>
+                    <div><strong>A note about this form</strong><p>This demo has no message server. You can prepare your note here and copy it to send using your own email app.</p></div>
+                </div>
+                <div class="garage-mascot">
+                    <img src="assets/images/bl8watermark.png" alt="Beta Mechanic garage mascot">
+                    <div><span>THE GARAGE CREW</span><strong>Always up for a car story.</strong></div>
+                </div>
+            </div>
+            <form class="contact-form" id="garage-contact">
+                <div class="form-topline"><span>GARAGE INBOX</span><span>FORM 001</span></div>
+                <label for="name">Your name</label>
+                <input id="name" name="name" type="text" placeholder="What should we call you?" autocomplete="name" required>
+                <label for="email">Email address</label>
+                <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+                <label for="topic">What are we talking about?</label>
+                <select id="topic" name="topic" required>
+                    <option value="" selected disabled>Pick a topic</option>
+                    <option>My dream garage</option>
+                    <option>Car design and engineering</option>
+                    <option>A car for the gallery</option>
+                    <option>Just saying hello</option>
+                </select>
+                <label for="message">Your message <span class="character-count"><span id="message-count">0</span> / 600</span></label>
+                <textarea id="message" name="message" rows="6" maxlength="600" placeholder="Tell us what’s on your mind..." required></textarea>
+                <button class="button-link button-primary form-submit" type="submit">Prepare my message <span aria-hidden="true">↗</span></button>
+                <div class="form-feedback" id="form-feedback" role="status" aria-live="polite" hidden></div>
+                <button class="copy-button" id="copy-message" type="button" hidden>Copy prepared message</button>
+            </form>
+        </section>
+
+        <section class="faq-section content-wrap">
+            <div class="section-heading">
+                <p class="eyebrow">Quick answers</p>
+                <h2>Before you<br><span>hit the apex.</span></h2>
+            </div>
+            <div class="faq-list">
+                <details class="info-card">
+                    <summary><span class="card-number">01</span><span>Can I suggest a car for the gallery?</span><span class="summary-icon" aria-hidden="true">+</span></summary>
+                    <p>Absolutely. Use the message form and tell us what makes it special—design, engineering, history, or the way it makes you feel.</p>
+                </details>
+                <details class="info-card">
+                    <summary><span class="card-number">02</span><span>Does this page send my message?</span><span class="summary-icon" aria-hidden="true">+</span></summary>
+                    <p>Not yet. This is a front-end demo with no delivery service connected. The form prepares a message you can copy, but nothing is sent or stored.</p>
+                </details>
+                <details class="info-card">
+                    <summary><span class="card-number">03</span><span>Can I share my own car story?</span><span class="summary-icon" aria-hidden="true">+</span></summary>
+                    <p>That’s exactly the kind of thing we’d like to hear about. Include the details that matter to you and what makes the car yours.</p>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <a class="footer-brand" href="index.html">BETA<span>MECHANIC</span></a>
+        <p>Made for the love of the drive.</p>
+        <nav aria-label="Footer navigation">
+            <a href="index.html">Home</a><a href="gallery.html">Gallery</a><a href="cars.html">Cars</a><a href="guide.html">Guide</a><a href="contact.html">Contact</a>
+        </nav>
+        <small>© <span data-year></span> Beta Mechanic. All roads lead somewhere.</small>
+    </footer>
+</body>
+</html>

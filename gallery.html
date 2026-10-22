@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111820">
+    <meta name="description" content="Explore the Beta Mechanic garage: hypercar design, performance engineering, and automotive details.">
+    <title>Beta Mechanic | The Garage</title>
+    <link rel="icon" href="assets/images/bl8watermark.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <script src="site.js" defer></script>
+</head>
+<body class="site-page gallery-page">
+    <header class="site-header">
+        <nav class="site-nav" aria-label="Main navigation">
+            <a class="site-brand" href="index.html" aria-label="Beta Mechanic home">
+                <span class="brand-mark" aria-hidden="true">B<span>M</span></span>
+                <span class="brand-name">BETA<span>MECHANIC</span></span>
+            </a>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-links">
+                <span></span><span></span><span></span>
+                <span class="visually-hidden">Toggle navigation</span>
+            </button>
+            <ul class="nav-links" id="primary-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gallery.html" aria-current="page">Gallery</a></li>
+                <li><a href="cars.html">Cars</a></li>
+                <li><a href="guide.html">Guide</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a class="nav-cta" href="test1.htm">Test Drive</a></li>
+            </ul>
+        </nav>
+        <div class="header-showcase">
+            <p class="eyebrow"><span class="status-dot"></span> The Beta Mechanic collection</p>
+            <h1>Welcome to<br><span>the garage.</span></h1>
+            <p class="showcase-copy">A closer look at the lines, ideas, and engineering that make a great car unforgettable.</p>
+            <div class="showcase-actions">
+                <a class="button-link button-primary" href="#collection">Browse the collection <span aria-hidden="true">↓</span></a>
+            </div>
+            <span class="hero-index" aria-hidden="true">02 / 03</span>
+        </div>
+        <div class="header-meta" aria-label="Site motto">
+            <span>DESIGN / ENGINEERING / PASSION</span><span>THE GARAGE — VOL. 001</span>
+        </div>
+    </header>
+
+    <main>
+        <section class="gallery-intro content-wrap" id="collection">
+            <div>
+                <p class="eyebrow">Four images. Three legends.</p>
+                <h2>Look closer.</h2>
+            </div>
+                <p>Scenes from your garage meet the details behind three unforgettable names: the Mustang, Bugatti Centodieci, and Koenigsegg Jesko. Filter the collection or open a photo to see it up close.</p>
+        </section>
+
+        <section class="collection-section content-wrap" aria-label="Featured car collection">
+            <div class="filter-bar" role="group" aria-label="Filter collection">
+                <span class="filter-label">Explore by</span>
+                <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">All stories</button>
+                <button class="filter-button" type="button" data-filter="design" aria-pressed="false">Design</button>
+                <button class="filter-button" type="button" data-filter="engineering" aria-pressed="false">Engineering</button>
+            </div>
+            <div class="collection-grid">
+                <article class="collection-card collection-card-image" data-category="design">
+                    <button class="image-open" type="button" aria-label="Open larger Mustang night scene">
+                        <img src="assets/images/1a15d0025e668-screenshotUrl.jpg" alt="Nighttime Driving Empire scene with performance cars on a city road">
+                        <span class="image-open-icon" aria-hidden="true">⤢</span>
+                    </button>
+                    <div class="collection-caption">
+                        <span class="card-kicker">01 / THE AMERICAN ICON</span>
+                        <h3>Ford Mustang</h3>
+                        <p>A night-drive snapshot for a nameplate that has always made a statement. <a class="inline-link" href="cars.html#mustang">Explore its story ↗</a></p>
+                    </div>
+                </article>
+                <article class="collection-card collection-card-image" data-category="design">
+                    <button class="image-open" type="button" aria-label="Open larger monochrome hypercar scene">
+                        <img src="assets/images/Screenshot_20261022_033338_Racing Master.jpg" alt="Monochrome Racing Master scene with a dramatic rear-engined hypercar">
+                        <span class="image-open-icon" aria-hidden="true">⤢</span>
+                    </button>
+                    <div class="collection-caption">
+                        <span class="card-kicker">02 / THE RARE ONE</span>
+                        <h3>Bugatti Centodieci</h3>
+                        <p>A stark, cinematic scene for a modern homage to Bugatti’s EB110. <a class="inline-link" href="cars.html#centodieci">Explore its story ↗</a></p>
+                    </div>
+                </article>
+                <article class="collection-card collection-card-image" data-category="design">
+                    <button class="image-open" type="button" aria-label="Open larger image of the Koenigsegg Jesko">
+                        <img src="assets/images/bl8_jesko_pose.png" alt="Koenigsegg Jesko in a dramatic studio setting">
+                        <span class="image-open-icon" aria-hidden="true">⤢</span>
+                    </button>
+                    <div class="collection-caption">
+                        <span class="card-kicker">01 / FORM</span>
+                        <h3>Koenigsegg Jesko</h3>
+                        <p>Sharp lines meet a shape designed to slice through the air. <a class="inline-link" href="cars.html#jesko">Explore its story ↗</a></p>
+                    </div>
+                </article>
+                <article class="collection-card collection-card-spec" data-category="engineering">
+                    <div class="spec-graphic" aria-hidden="true"><span>V8</span><i></i><i></i><i></i></div>
+                    <div class="collection-caption">
+                        <span class="card-kicker">02 / POWERTRAIN</span>
+                        <h3>A responsive heart</h3>
+                        <p>A twin-turbo V8 sits at the center of a powertrain built for fierce response and high-rev drama.</p>
+                        <span class="fact-chip">TWIN-TURBO V8</span>
+                    </div>
+                </article>
+                <article class="collection-card collection-card-aero" data-category="engineering">
+                    <div class="aero-graphic" aria-hidden="true"><span class="aero-line"></span><span class="aero-wing"></span><span class="aero-label">AIRFLOW STUDY<br>NO. 003</span></div>
+                    <div class="collection-caption">
+                        <span class="card-kicker">03 / AERODYNAMICS</span>
+                        <h3>Shape meets speed</h3>
+                        <p>Bodywork and aero hardware work together to keep the car composed when the pace rises.</p>
+                    </div>
+                </article>
+                <article class="collection-card collection-card-detail" data-category="design">
+                    <div class="detail-graphic" aria-hidden="true"><span>CRAFT</span><span>IS THE<br>CHARACTER.</span></div>
+                    <div class="collection-caption">
+                        <span class="card-kicker">04 / DETAILS</span>
+                        <h3>Made to be noticed</h3>
+                        <p>Look past the headline numbers and the tiny design decisions start telling their own story.</p>
+                    </div>
+                </article>
+            </div>
+            <p class="empty-filter" hidden>No stories in this category yet.</p>
+        </section>
+
+        <dialog class="image-dialog" aria-label="Enlarged car image">
+            <button class="dialog-close" type="button" aria-label="Close image">×</button>
+            <img src="assets/images/bl8_jesko_pose.png" alt="Koenigsegg Jesko in a dramatic studio setting">
+            <p><strong>Koenigsegg Jesko</strong> <span>— Beta Mechanic Garage Note 001</span></p>
+        </dialog>
+
+        <section class="cta-strip">
+            <p class="eyebrow">Have a favorite?</p>
+            <h2>Every enthusiast has<br>a story to tell.</h2>
+            <a class="button-link button-dark" href="contact.html">Share yours <span aria-hidden="true">↗</span></a>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <a class="footer-brand" href="index.html">BETA<span>MECHANIC</span></a>
+        <p>Made for the love of the drive.</p>
+        <nav aria-label="Footer navigation">
+            <a href="index.html">Home</a><a href="gallery.html">Gallery</a><a href="cars.html">Cars</a><a href="guide.html">Guide</a><a href="contact.html">Contact</a>
+        </nav>
+        <small>© <span data-year></span> Beta Mechanic. All roads lead somewhere.</small>
+    </footer>
+</body>
+</html>

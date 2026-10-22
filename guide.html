@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111820">
+    <meta name="description" content="A practical, code-by-code guide to rebuilding the Beta Mechanic website.">
+    <title>Beta Mechanic | Build This Website</title>
+    <link rel="icon" href="assets/images/bl8watermark.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <script src="site.js" defer></script>
+</head>
+<body class="site-page guide-page">
+    <header class="site-header">
+        <nav class="site-nav" aria-label="Main navigation">
+            <a class="site-brand" href="index.html" aria-label="Beta Mechanic home">
+                <span class="brand-mark" aria-hidden="true">B<span>M</span></span>
+                <span class="brand-name">BETA<span>MECHANIC</span></span>
+            </a>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-links">
+                <span></span><span></span><span></span>
+                <span class="visually-hidden">Toggle navigation</span>
+            </button>
+            <ul class="nav-links" id="primary-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="cars.html">Cars</a></li>
+                <li><a href="guide.html" aria-current="page">Guide</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a class="nav-cta" href="test1.htm">Test Drive</a></li>
+            </ul>
+        </nav>
+        <div class="header-showcase guide-hero">
+            <p class="eyebrow"><span class="status-dot"></span> A practical teardown of this exact site</p>
+            <h1>Build this<br><span>website.</span></h1>
+            <p class="showcase-copy">No vague lessons. Follow the same HTML, CSS, and JavaScript used here. Copy each part, understand what it controls, and build the page in layers.</p>
+            <div class="showcase-actions">
+                <a class="button-link button-primary" href="#build-order">Start building <span aria-hidden="true">↓</span></a>
+                <a class="text-link" href="index.html">Open the home page <span aria-hidden="true">↗</span></a>
+            </div>
+            <span class="hero-index" aria-hidden="true">READ / COPY / MODIFY</span>
+        </div>
+        <div class="header-meta" aria-label="Guide summary">
+            <span>REAL PROJECT CODE</span><span>EXPLAINED STEP BY STEP</span><span>NO FRAMEWORK REQUIRED</span>
+        </div>
+    </header>
+
+    <main class="guide-layout" id="start-here">
+        <aside class="guide-sidebar">
+            <p class="eyebrow">Jump to a build step</p>
+            <nav aria-label="Guide sections">
+                <a href="#build-order">00 / Build order</a>
+                <a href="#page-shell">01 / Page shell</a>
+                <a href="#header-html">02 / Header HTML</a>
+                <a href="#header-css">03 / Header CSS</a>
+                <a href="#hero-section">04 / Hero content</a>
+                <a href="#cards">05 / Image cards</a>
+                <a href="#footer-code">06 / Footer</a>
+                <a href="#mobile-menu">07 / Mobile menu JS</a>
+                <a href="#gallery-code">08 / Gallery JS</a>
+                <a href="#contact-code">09 / Contact JS</a>
+                <a href="#debugging">10 / Debugging</a>
+            </nav>
+        </aside>
+
+        <article class="guide-content">
+            <section class="guide-section guide-opening">
+                <p class="eyebrow">What we are actually building</p>
+                <h2>One page is a set<br><span>of connected pieces.</span></h2>
+                <p>The visible website is not one huge block of code. The header is HTML, its appearance is CSS, and its mobile button is JavaScript. They connect through names: an HTML element has a class, CSS selects that class, and JavaScript can find that same element.</p>
+                <div class="guide-three-parts">
+                    <div><strong>HTML</strong><p>Creates the actual elements: a header, navigation links, an image, cards, and buttons.</p></div>
+                    <div><strong>CSS</strong><p>Selects those elements and controls their size, color, position, spacing, and mobile layout.</p></div>
+                    <div><strong>JavaScript</strong><p>Finds some of those elements and changes their state when a person clicks, types, or submits.</p></div>
+                </div>
+                <div class="guide-callout"><strong>How to use this page</strong><p>Copy a complete code block into the named file, save it, and refresh the browser. Then change one value and refresh again. When a code block says “add this to the existing file,” do not erase the rest of that file.</p></div>
+            </section>
+
+            <section class="guide-section" id="build-order">
+                <div class="guide-section-heading">
+                    <span class="guide-number">00</span>
+                    <div><p class="eyebrow">Do these in order</p><h2>Build order and file map</h2></div>
+                </div>
+                <p>These are the actual files in this project. They sit beside each other, so links such as <code>cars.html</code> can point directly to another page.</p>
+                <pre class="code-block"><code>Learning Programming/
+├── index.html       home page
+├── gallery.html     image gallery
+├── cars.html        three long car stories
+├── contact.html     contact form demo
+├── guide.html       this tutorial
+├── test1.htm        existing test page
+├── styles.css       shared site styles
+├── site.js          shared interactions
+└── assets/
+    └── images/
+        ├── bl8_jesko_pose.png
+        ├── bl8watermark.png
+        └── other car screenshots</code></pre>
+                <ol class="workflow-list">
+                    <li><strong>Create the page shell.</strong><span>Make an HTML file, link <code>styles.css</code> and <code>site.js</code>, and add the shared header, main area, and footer.</span></li>
+                    <li><strong>Make the structure first.</strong><span>Add headings, text, links, and images. Check that links work before styling.</span></li>
+                    <li><strong>Add CSS in layers.</strong><span>Start with colors and spacing, then layout, then hover/focus states, then mobile rules.</span></li>
+                    <li><strong>Add JavaScript only where needed.</strong><span>Static text needs no JavaScript. Use it for a click action such as opening the menu.</span></li>
+                    <li><strong>Test at two sizes.</strong><span>Check a wide desktop and a narrow phone viewport. A page that looks good only at one width is not finished.</span></li>
+                </ol>
+                <p>The existing <code>test1.htm</code> is separate. The newer pages use <code>class="site-page"</code>; the CSS uses that class to apply the newer design only to the main site pages.</p>
+            </section>
+
+            <section class="guide-section" id="page-shell">
+                <div class="guide-section-heading">
+                    <span class="guide-number">01</span>
+                    <div><p class="eyebrow">Start every new page here</p><h2>The page shell</h2></div>
+                </div>
+                <p>This is the smallest useful starting document for a new page. Paste it into a new file beside <code>index.html</code>, for example <code>my-page.html</code>.</p>
+                <pre class="code-block"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;meta name="theme-color" content="#111820"&gt;
+    &lt;title&gt;Beta Mechanic | My Page&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+    &lt;script src="site.js" defer&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body class="site-page"&gt;
+    &lt;!-- Put the shared header here. --&gt;
+    &lt;header class="site-header"&gt;...&lt;/header&gt;
+
+    &lt;main&gt;
+        &lt;h1&gt;My page heading&lt;/h1&gt;
+        &lt;p&gt;My page content goes here.&lt;/p&gt;
+    &lt;/main&gt;
+
+    &lt;!-- Put the shared footer here. --&gt;
+    &lt;footer class="site-footer"&gt;...&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                <div class="line-breakdown">
+                    <p><code>lang="en"</code> tells browsers and screen readers that the page language is English.</p>
+                    <p><code>charset="UTF-8"</code> supports punctuation and symbols used in the page.</p>
+                    <p>The <code>viewport</code> line makes a phone use its real screen width instead of pretending it is a wide desktop.</p>
+                    <p><code>href="styles.css"</code> loads the same stylesheet used by the other pages. The path is relative to this HTML file.</p>
+                    <p><code>src="site.js"</code> loads the shared interactions. <code>defer</code> waits until the HTML has been parsed before running the script.</p>
+                    <p><code>class="site-page"</code> is important: many design rules start with <code>.site-page</code>, so they only apply to the redesigned site pages.</p>
+                    <p><code>&lt;main&gt;</code> holds the unique content of this page. There should generally be one main content area per page.</p>
+                </div>
+            </section>
+
+            <section class="guide-section" id="header-html">
+                <div class="guide-section-heading">
+                    <span class="guide-number">02</span>
+                    <div><p class="eyebrow">Copy this into the page shell</p><h2>The header HTML</h2></div>
+                </div>
+                <p>This header is repeated on Home, Gallery, Cars, Contact, and Guide. The links and brand are ordinary HTML; the class names are hooks for the CSS.</p>
+                <pre class="code-block"><code>&lt;header class="site-header"&gt;
+    &lt;nav class="site-nav" aria-label="Main navigation"&gt;
+        &lt;a class="site-brand" href="index.html"
+           aria-label="Beta Mechanic home"&gt;
+            &lt;span class="brand-mark" aria-hidden="true"&gt;
+                B&lt;span&gt;M&lt;/span&gt;
+            &lt;/span&gt;
+            &lt;span class="brand-name"&gt;
+                BETA&lt;span&gt;MECHANIC&lt;/span&gt;
+            &lt;/span&gt;
+        &lt;/a&gt;
+
+        &lt;button class="menu-toggle" type="button"
+                aria-expanded="false"
+                aria-controls="primary-links"&gt;
+            &lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;
+            &lt;span class="visually-hidden"&gt;
+                Toggle navigation
+            &lt;/span&gt;
+        &lt;/button&gt;
+
+        &lt;ul class="nav-links" id="primary-links"&gt;
+            &lt;li&gt;&lt;a href="index.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="gallery.html"&gt;Gallery&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="cars.html"&gt;Cars&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="guide.html"&gt;Guide&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="contact.html"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;
+                &lt;a class="nav-cta" href="test1.htm"&gt;Test Drive&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+
+    &lt;div class="header-showcase"&gt;
+        &lt;p class="eyebrow"&gt;
+            &lt;span class="status-dot"&gt;&lt;/span&gt;
+            Independent automotive culture
+        &lt;/p&gt;
+        &lt;h1&gt;Driven by&lt;br&gt;&lt;span&gt;the details.&lt;/span&gt;&lt;/h1&gt;
+        &lt;p class="showcase-copy"&gt;
+            A home for fearless design and engineering.
+        &lt;/p&gt;
+        &lt;div class="showcase-actions"&gt;
+            &lt;a class="button-link button-primary" href="gallery.html"&gt;
+                Explore the garage &lt;span aria-hidden="true"&gt;↗&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="header-meta"&gt;
+        &lt;span&gt;BUILT FOR THE BOLD&lt;/span&gt;
+        &lt;span&gt;EST. FOR THE LOVE OF CARS&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+                <div class="line-breakdown">
+                    <p><code>&lt;header class="site-header"&gt;</code> is the outside banner. CSS paints the Jesko photo on this element.</p>
+                    <p><code>&lt;nav&gt;</code> groups navigation links. <code>aria-label</code> gives this navigation a name for screen readers.</p>
+                    <p><code>href="index.html"</code> makes the brand clickable and returns to Home.</p>
+                    <p>The nested spans inside <code>brand-mark</code> and <code>brand-name</code> let CSS color and position parts of the logo separately.</p>
+                    <p><code>aria-hidden="true"</code> hides decorative letters/arrows from screen readers. The visible words still provide the meaning.</p>
+                    <p>The button's <code>aria-expanded="false"</code> says the mobile menu starts closed. JavaScript changes it to <code>true</code> when opened.</p>
+                    <p><code>aria-controls="primary-links"</code> names the menu that this button controls. The menu's <code>id</code> must match: <code>primary-links</code>.</p>
+                    <p>The <code>ul</code> is the list of links; each <code>li</code> is one list item. Update the current page link with <code>aria-current="page"</code> so assistive technology can identify it.</p>
+                    <p><code>nav-cta</code> is an extra class for the highlighted last link. It does not change the destination; it changes how CSS styles that link.</p>
+                    <p><code>&lt;br&gt;</code> forces a line break in the hero heading. The inner <code>span</code> wraps only “the details.” so CSS can give it the lime color.</p>
+                </div>
+                <div class="guide-callout"><strong>When you copy the header</strong><p>Copy the same header to each new page. Change which link has <code>aria-current="page"</code>. Change the eyebrow, heading, paragraph, and button destination for that page. Keep the button <code>id</code> and <code>aria-controls</code> values matched or the mobile JavaScript will not find the menu.</p></div>
+            </section>
+
+            <section class="guide-section" id="header-css">
+                <div class="guide-section-heading">
+                    <span class="guide-number">03</span>
+                    <div><p class="eyebrow">The rules behind the banner</p><h2>The header CSS</h2></div>
+                </div>
+                <p>This is a simplified, paste-ready version of the header rules in <code>styles.css</code>. Put it at the end of that file. It assumes your page uses <code>class="site-page"</code> and the header HTML above.</p>
+                <pre class="code-block"><code>.site-page {
+    --lime: #d7fa38;
+    --deep: #101619;
+    overflow-x: hidden;
+    background: #f4f3ee;
+    color: #151a1d;
+}
+
+.site-page .site-header {
+    display: flex;
+    min-height: 690px;
+    flex-direction: column;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(215, 250, 56, 0.8);
+    background-color: #111820;
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(8, 12, 15, 0.91),
+            rgba(8, 12, 15, 0.2)
+        ),
+        linear-gradient(
+            0deg,
+            rgba(8, 12, 15, 0.85),
+            transparent 60%
+        ),
+        url("assets/images/bl8_jesko_pose.png");
+    background-position: center 52%;
+    background-size: cover;
+    color: #f4f3ee;
+}
+
+.site-page .site-nav {
+    width: min(1380px, 100%);
+    min-height: 104px;
+    margin: 0 auto;
+    padding: 22px 5.5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.17);
+}
+
+.site-page .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.site-page .nav-links a {
+    display: block;
+    padding: 12px 15px;
+    color: rgba(255, 255, 255, 0.83);
+    font-size: 0.73rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.site-page .nav-links a.nav-cta {
+    padding: 14px 19px;
+    border: 1px solid var(--lime);
+    background: var(--lime);
+    color: #151a1d;
+}</code></pre>
+                <div class="line-breakdown">
+                    <p><code>--lime</code> and <code>--deep</code> are CSS variables. Later rules can reuse them with <code>var(--lime)</code>; changing one variable changes the whole theme.</p>
+                    <p><code>overflow-x: hidden</code> prevents a decorative effect from creating a sideways scrollbar. It does not mean “hide all content.”</p>
+                    <p><code>min-height: 690px</code> makes the header tall but still allows it to grow if its content needs more space.</p>
+                    <p><code>display: flex</code> with <code>flex-direction: column</code> puts the nav, hero, and bottom meta strip in a vertical stack.</p>
+                    <p><code>background-image</code> accepts multiple layers. The first gradient is drawn on top of the second gradient, and both are on top of the Jesko photo.</p>
+                    <p>The dark gradient is important: without it, white hero text could disappear against bright parts of the photo.</p>
+                    <p><code>url(...)</code> points from <code>styles.css</code> into the asset folder. If the filename is wrong, the fallback background color still appears but the photo will not.</p>
+                    <p><code>background-position: center 52%</code> centers the photo and nudges its vertical crop. Try <code>center</code>, <code>center 40%</code>, or <code>center 65%</code>.</p>
+                    <p><code>background-size: cover</code> fills the header without stretching the image. Cropping is expected because the photo and header usually have different shapes.</p>
+                    <p><code>width: min(1380px, 100%)</code> means “use at most 1380px, but never wider than the parent.”</p>
+                    <p><code>margin: 0 auto</code> centers a fixed/max-width block horizontally.</p>
+                    <p>Flexbox <code>justify-content: space-between</code> pushes the brand and nav toward opposite sides. <code>align-items: center</code> aligns them vertically.</p>
+                    <p>The last selector <code>.site-page .nav-links a.nav-cta</code> is more specific than the general navigation-link selector, so it can give the call-to-action its own appearance.</p>
+                </div>
+                <h3>The logo is also built from HTML and CSS</h3>
+                <pre class="code-block"><code>.site-page .site-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.brand-mark {
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--lime);
+    color: var(--lime);
+    font-size: 1rem;
+    font-weight: 900;
+    letter-spacing: -0.12em;
+    transform: skew(-8deg);
+}
+
+.brand-name {
+    font-size: 1rem;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+}
+
+.brand-name span {
+    display: block;
+    margin-top: 3px;
+    color: var(--lime);
+    font-size: 0.7rem;
+    letter-spacing: 0.33em;
+}</code></pre>
+                <p>The logo uses text instead of a separate logo image. <code>inline-flex</code> lays the mark and brand name side by side. The <code>span</code> around the M and the second brand line lets CSS style those pieces differently. <code>place-items: center</code> centers the initials in the square, while <code>skew(-8deg)</code> gives the square a racing-inspired slant.</p>
+                <h3>What does the selector mean?</h3>
+                <pre class="code-block"><code>.site-page .nav-links a.nav-cta { ... }</code></pre>
+                <p>Read from left to right: find an element with class <code>nav-cta</code> that is an <code>a</code> link, inside an element with class <code>nav-links</code>, inside an element with class <code>site-page</code>. Spaces mean “somewhere inside.” No space would mean the same element has both classes.</p>
+            </section>
+
+            <section class="guide-section" id="hero-section">
+                <div class="guide-section-heading">
+                    <span class="guide-number">04</span>
+                    <div><p class="eyebrow">Headline, copy, and button</p><h2>The hero content</h2></div>
+                </div>
+                <p>The hero is the large message inside the image header. These are the CSS rules responsible for the huge headline, readable paragraph, and lime button.</p>
+                <pre class="code-block"><code>.header-showcase {
+    width: min(1380px, 100%);
+    margin: auto;
+    padding: 78px 5.5% 88px;
+}
+
+.header-showcase h1 {
+    max-width: 1050px;
+    margin: 0;
+    color: #fff;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 900;
+    letter-spacing: -0.075em;
+    line-height: 0.88;
+    text-transform: uppercase;
+}
+
+.header-showcase h1 span {
+    color: var(--lime);
+}
+
+.showcase-copy {
+    max-width: 500px;
+    margin: 26px 0 0;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.button-link {
+    min-height: 52px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 0 20px;
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 0.11em;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.button-primary {
+    background: var(--lime);
+    color: var(--deep);
+}</code></pre>
+                <div class="line-breakdown">
+                    <p><code>padding: 78px 5.5% 88px</code> means top, left/right, bottom. The percentage side padding adapts to screen width.</p>
+                    <p><code>font-size: clamp(3.5rem, 8vw, 7rem)</code> has a minimum, a flexible preferred size, and a maximum. The title grows with the screen but cannot become too tiny or huge.</p>
+                    <p><code>letter-spacing: -0.075em</code> pulls letters together. <code>em</code> scales with the current font size.</p>
+                    <p><code>line-height: 0.88</code> tightens the vertical gap between the two headline lines.</p>
+                    <p><code>rgba(255, 255, 255, 0.78)</code> is white at 78% opacity, so text can be slightly softer than the main heading.</p>
+                    <p><code>inline-flex</code> lets the link behave like a button while aligning its label and arrow. A link is still used because clicking it navigates to another location.</p>
+                    <p><code>gap</code> adds space between the label and arrow. It is cleaner than adding a fake space character to control layout.</p>
+                </div>
+                <div class="guide-callout"><strong>Change the hero for each page</strong><p>The CSS is shared, but the heading text is not. Replace “Driven by the details.” with that page's own heading in its HTML. Keep the same classes if you want the same typography and button design.</p></div>
+            </section>
+
+            <section class="guide-section" id="cards">
+                <div class="guide-section-heading">
+                    <span class="guide-number">05</span>
+                    <div><p class="eyebrow">A reusable piece of page content</p><h2>Image cards and grids</h2></div>
+                </div>
+                <p>Home uses a three-car preview. The Gallery uses cards with a button around the photo so the photo can open in a lightbox.</p>
+                <pre class="code-block"><code>&lt;div class="machine-preview-grid"&gt;
+    &lt;a class="machine-preview-card" href="cars.html#mustang"&gt;
+        &lt;img src="assets/images/1a15d0025e668-screenshotUrl.jpg"
+             alt="Nighttime performance cars on a city road"&gt;
+        &lt;span class="preview-number"&gt;01 / AMERICAN ICON&lt;/span&gt;
+        &lt;h3&gt;Ford Mustang &lt;span aria-hidden="true"&gt;↗&lt;/span&gt;&lt;/h3&gt;
+        &lt;p&gt;Long-hood attitude with a story spanning generations.&lt;/p&gt;
+    &lt;/a&gt;
+&lt;/div&gt;</code></pre>
+                <p>The whole card is an <code>&lt;a&gt;</code> because clicking anywhere on it navigates to the Mustang section. The fragment <code>#mustang</code> matches <code>id="mustang"</code> on <code>cars.html</code>. The image path points to the local asset. The <code>alt</code> is a useful description, not a filename.</p>
+                <h3>Make several cards into columns</h3>
+                <pre class="code-block"><code>.machine-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.machine-preview-card img {
+    width: 100%;
+    height: 225px;
+    object-fit: cover;
+}
+
+@media (max-width: 900px) {
+    .machine-preview-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 680px) {
+    .machine-preview-grid {
+        grid-template-columns: 1fr;
+    }
+}</code></pre>
+                <div class="line-breakdown">
+                    <p><code>repeat(3, ...)</code> makes three equal columns. <code>1fr</code> means one share of the available space.</p>
+                    <p><code>minmax(0, 1fr)</code> lets a column shrink smaller than its content's default minimum, preventing long content from forcing the whole page wider.</p>
+                    <p><code>gap: 18px</code> creates even space between cards without adding margins to each card.</p>
+                    <p><code>width: 100%</code> makes the image fill its card. Fixed height keeps all card images aligned.</p>
+                    <p><code>object-fit: cover</code> fills the image box while preserving the photo's proportions; it crops the excess instead of stretching it.</p>
+                    <p>The media queries change the number of columns at tablet and phone sizes. This is why we do not need a second mobile version of the HTML.</p>
+                </div>
+                <h3>The Home page feature panel</h3>
+                <p>This is the larger two-column photo-and-text feature. It uses one photo column and one text column; on a phone, the CSS switches it to one column.</p>
+                <pre class="code-block"><code>&lt;section class="feature-section"&gt;
+    &lt;div class="feature-visual"&gt;
+        &lt;img src="assets/images/bl8_jesko_pose.png"
+             alt="Koenigsegg Jesko, captured in a dramatic studio setting"&gt;
+        &lt;span class="image-label"&gt;GARAGE NOTE 001&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="feature-copy"&gt;
+        &lt;p class="eyebrow"&gt;In the spotlight&lt;/p&gt;
+        &lt;h2&gt;Koenigsegg&lt;br&gt;Jesko&lt;/h2&gt;
+        &lt;p&gt;A sculpted silhouette with a single-minded purpose.
+           The Jesko turns airflow into part of the design,
+           proving that function can be every bit as striking
+           as form.&lt;/p&gt;
+        &lt;a class="arrow-link" href="gallery.html"&gt;
+            See the details &lt;span aria-hidden="true"&gt;↗&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+                <pre class="code-block"><code>.feature-section {
+    display: grid;
+    min-height: 540px;
+    grid-template-columns: 1.2fr 0.8fr;
+    background: #e6e6dc;
+}
+
+.feature-visual {
+    position: relative;
+    min-height: 540px;
+    overflow: hidden;
+    background: #c8cac2;
+}
+
+.feature-visual::after {
+    position: absolute;
+    inset: 55% 0 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.55), transparent);
+    content: "";
+    pointer-events: none;
+}
+
+.feature-visual img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 600ms ease;
+}
+
+.feature-visual:hover img {
+    transform: scale(1.035);
+}
+
+.image-label {
+    position: absolute;
+    z-index: 1;
+    bottom: 26px;
+    left: 5%;
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+}
+
+.feature-copy {
+    align-self: center;
+    padding: 70px clamp(35px, 7vw, 110px);
+}
+
+@media (max-width: 680px) {
+    .feature-section {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-visual {
+        min-height: 350px;
+    }
+}</code></pre>
+                <div class="line-breakdown">
+                    <p><code>grid-template-columns: 1.2fr 0.8fr</code> gives the image 1.2 shares and copy 0.8 shares, so the image is wider.</p>
+                    <p><code>position: relative</code> on the photo wrapper creates the reference box for its absolutely positioned image and label.</p>
+                    <p><code>inset: 0</code> is shorthand for top, right, bottom, and left all being zero. With width/height at 100%, the image fills its wrapper.</p>
+                    <p><code>transition</code> makes the zoom happen smoothly. The hover selector only scales the image while the pointer is over its wrapper.</p>
+                    <p><code>align-self: center</code> vertically centers the text column in the grid row. The phone media query stacks both columns.</p>
+                </div>
+                <h3>Gallery card that opens a lightbox</h3>
+                <pre class="code-block"><code>&lt;article class="collection-card" data-category="design"&gt;
+    &lt;button class="image-open"
+            type="button"
+            aria-label="Open larger image of the Jesko"&gt;
+        &lt;img src="assets/images/bl8_jesko_pose.png"
+             alt="Rear view of a white Koenigsegg Jesko"&gt;
+        &lt;span class="image-open-icon" aria-hidden="true"&gt;⤢&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;div class="collection-caption"&gt;
+        &lt;span class="card-kicker"&gt;01 / FORM&lt;/span&gt;
+        &lt;h3&gt;Koenigsegg Jesko&lt;/h3&gt;
+        &lt;p&gt;A shape designed around airflow.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/article&gt;</code></pre>
+                <p>This uses a <code>button</code> rather than a link because the action is “open a viewer,” not “go to another page.” <code>data-category="design"</code> is custom data used by the gallery filter. The button's accessible label explains what clicking it does.</p>
+                <pre class="code-block"><code>&lt;dialog class="image-dialog" aria-label="Enlarged car image"&gt;
+    &lt;button class="dialog-close" type="button"
+            aria-label="Close image"&gt;×&lt;/button&gt;
+    &lt;img src="assets/images/bl8_jesko_pose.png"
+         alt="Rear view of a white Koenigsegg Jesko"&gt;
+    &lt;p&gt;&lt;strong&gt;Koenigsegg Jesko&lt;/strong&gt;
+       &lt;span&gt;— Beta Mechanic Garage Note 001&lt;/span&gt;&lt;/p&gt;
+&lt;/dialog&gt;</code></pre>
+                <p>There is one dialog for the whole gallery. JavaScript replaces its image and title based on which card was clicked. The browser's built-in <code>&lt;dialog&gt;</code> provides modal behavior: content appears above the page, and Escape can close it.</p>
+                <pre class="code-block"><code>.image-dialog {
+    width: min(960px, calc(100% - 32px));
+    max-width: none;
+    padding: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: #101619;
+    color: #fff;
+}
+
+.image-dialog::backdrop {
+    background: rgba(4, 7, 8, 0.84);
+    backdrop-filter: blur(4px);
+}
+
+.image-dialog img {
+    width: 100%;
+    max-height: 76vh;
+    display: block;
+    object-fit: contain;
+    background: #1c2426;
+}</code></pre>
+                <p><code>::backdrop</code> selects the dim layer behind an open dialog. <code>vh</code> means viewport height. <code>object-fit: contain</code> keeps the full photo visible instead of cropping it.</p>
+            </section>
+
+            <section class="guide-section" id="footer-code">
+                <div class="guide-section-heading">
+                    <span class="guide-number">06</span>
+                    <div><p class="eyebrow">The bottom of every page</p><h2>Footer HTML, CSS, and year</h2></div>
+                </div>
+                <p>The footer is repeated on each page. Its layout uses CSS Grid: the brand, short message, and links sit across the top, and the copyright note spans the bottom.</p>
+                <pre class="code-block"><code>&lt;footer class="site-footer"&gt;
+    &lt;a class="footer-brand" href="index.html"&gt;
+        BETA&lt;span&gt;MECHANIC&lt;/span&gt;
+    &lt;/a&gt;
+    &lt;p&gt;Made for the love of the drive.&lt;/p&gt;
+    &lt;nav aria-label="Footer navigation"&gt;
+        &lt;a href="index.html"&gt;Home&lt;/a&gt;
+        &lt;a href="gallery.html"&gt;Gallery&lt;/a&gt;
+        &lt;a href="cars.html"&gt;Cars&lt;/a&gt;
+        &lt;a href="guide.html"&gt;Guide&lt;/a&gt;
+        &lt;a href="contact.html"&gt;Contact&lt;/a&gt;
+    &lt;/nav&gt;
+    &lt;small&gt;© &lt;span data-year&gt;&lt;/span&gt;
+        Beta Mechanic. All roads lead somewhere.
+    &lt;/small&gt;
+&lt;/footer&gt;</code></pre>
+                <pre class="code-block"><code>.site-footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    align-items: center;
+    gap: 16px 30px;
+    padding: 45px max(32px, calc((100% - 1180px) / 2));
+    background: var(--deep);
+    color: #fff;
+}
+
+.site-footer small {
+    grid-column: 1 / -1;
+    padding-top: 17px;
+    border-top: 1px solid rgba(255, 255, 255, 0.13);
+}</code></pre>
+                <div class="line-breakdown">
+                    <p><code>&lt;footer&gt;</code> tells the browser and assistive technology that these links and notes close out the page.</p>
+                    <p>The footer links use regular relative paths, just like the header. Add a new page by adding another <code>&lt;a href="new-page.html"&gt;</code>.</p>
+                    <p><code>data-year</code> is a custom marker. JavaScript looks for it and puts the current year inside its span.</p>
+                    <p><code>grid-template-columns: 1fr 1fr auto</code> creates two flexible columns and one column sized to its content.</p>
+                    <p><code>grid-column: 1 / -1</code> makes the small copyright line span from the first grid column to the last.</p>
+                    <p><code>max(32px, calc((100% - 1180px) / 2))</code> chooses whichever is larger: 32px of padding or the space needed to align content inside a centered 1180px area.</p>
+                </div>
+                <h3>The tiny year script</h3>
+                <pre class="code-block"><code>document.querySelectorAll("[data-year]").forEach((element) =&gt; {
+    element.textContent = new Date().getFullYear();
+});</code></pre>
+                <p><code>[data-year]</code> selects every element with that attribute. <code>new Date().getFullYear()</code> gets the current year from the computer. Setting <code>textContent</code> replaces the empty span's content. This is why the footer year updates without manually editing every page.</p>
+                <h3>The Home page save toggle</h3>
+                <p>This is the button HTML the script acts on. <code>aria-pressed</code> starts at false because the car is not saved yet.</p>
+                <pre class="code-block"><code>&lt;button class="favorite-button" type="button"
+        aria-pressed="false"&gt;
+    &lt;span aria-hidden="true"&gt;☆&lt;/span&gt; Save the Jesko
+&lt;/button&gt;</code></pre>
+                <pre class="code-block"><code>document.querySelectorAll(".favorite-button").forEach((button) =&gt; {
+    button.addEventListener("click", () =&gt; {
+        const isSaved =
+            button.getAttribute("aria-pressed") === "true";
+        button.setAttribute("aria-pressed", String(!isSaved));
+        button.querySelector("span").textContent =
+            isSaved ? "☆" : "★";
+        button.lastChild.textContent =
+            isSaved ? " Save the Jesko" : " Jesko saved";
+    });
+});</code></pre>
+                <p>This only runs on a page with a <code>.favorite-button</code>. It flips the accessible pressed state, changes the star, and changes the label. The <code>condition ? valueA : valueB</code> expression is called a ternary: it chooses one of two values. This save is temporary; refresh the page and it resets because nothing stores it.</p>
+            </section>
+
+            <section class="guide-section" id="mobile-menu">
+                <div class="guide-section-heading">
+                    <span class="guide-number">07</span>
+                    <div><p class="eyebrow">Exact code from site.js</p><h2>The mobile menu JavaScript</h2></div>
+                </div>
+                <p>The desktop navigation is visible by default. On a small screen CSS hides the link list and shows the menu button. This JavaScript adds or removes the <code>is-open</code> class when the button is clicked.</p>
+                <pre class="code-block"><code>document.querySelectorAll(".menu-toggle").forEach((toggle) =&gt; {
+    const menu = document.getElementById(
+        toggle.getAttribute("aria-controls")
+    );
+
+    if (!menu) {
+        return;
+    }
+
+    const closeMenu = () =&gt; {
+        toggle.setAttribute("aria-expanded", "false");
+        menu.classList.remove("is-open");
+    };
+
+    toggle.addEventListener("click", () =&gt; {
+        const isOpen =
+            toggle.getAttribute("aria-expanded") === "true";
+        toggle.setAttribute("aria-expanded", String(!isOpen));
+        menu.classList.toggle("is-open", !isOpen);
+    });
+
+    menu.querySelectorAll("a").forEach((link) =&gt; {
+        link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("keydown", (event) =&gt; {
+        if (event.key === "Escape") {
+            closeMenu();
+        }
+    });
+});</code></pre>
+                <div class="line-breakdown">
+                    <p><code>document</code> means the current web page. <code>querySelectorAll(".menu-toggle")</code> finds every button with that class.</p>
+                    <p><code>forEach((toggle) =&gt; { ... })</code> runs the block once per matching button. <code>toggle</code> is the current button being handled.</p>
+                    <p><code>getAttribute("aria-controls")</code> reads the text <code>primary-links</code> from the button. <code>getElementById(...)</code> finds the menu with that id.</p>
+                    <p><code>if (!menu) return;</code> is a safety check. If there is no matching menu, stop instead of trying to modify a missing element.</p>
+                    <p><code>closeMenu</code> is a function stored in a variable. It changes the accessibility state back to closed and removes the class that makes the menu visible.</p>
+                    <p><code>addEventListener("click", ...)</code> says “run this function when the button is clicked.”</p>
+                    <p><code>===</code> checks equality. The result is either <code>true</code> or <code>false</code>. The comparison checks whether the menu is currently marked open.</p>
+                    <p><code>!isOpen</code> means “the opposite of <code>isOpen</code>.” If it was closed, the new state is open.</p>
+                    <p><code>setAttribute</code> updates <code>aria-expanded</code>. <code>String(...)</code> turns the boolean into the text values HTML expects: <code>"true"</code> or <code>"false"</code>.</p>
+                    <p><code>classList.toggle("is-open", !isOpen)</code> adds the class when the second argument is true and removes it when false.</p>
+                    <p>The next loop attaches <code>closeMenu</code> to every menu link, so choosing Home or Gallery closes the mobile menu.</p>
+                    <p>The final listener watches keyboard events. If the pressed key is Escape, the same close function runs.</p>
+                </div>
+                <h3>Desktop default, then phone override</h3>
+                <pre class="code-block"><code>@media (max-width: 680px) {
+    .menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .menu-toggle &gt; span:not(.visually-hidden) {
+        width: 18px;
+        height: 2px;
+        background: var(--lime);
+    }
+
+    .site-page .nav-links {
+        position: absolute;
+        top: calc(100% - 1px);
+        right: 0;
+        left: 0;
+        display: none;
+        flex-direction: column;
+        background: rgba(12, 17, 20, 0.98);
+    }
+
+    .site-page .nav-links.is-open {
+        display: flex;
+    }
+}</code></pre>
+                <pre class="code-block"><code>.menu-toggle {
+    display: none;
+}</code></pre>
+                <p>At desktop width the button has <code>display: none</code>; the links are already visible. Inside the phone media query, the button becomes <code>display: flex</code>. The three empty spans become the three horizontal lines of the hamburger icon; <code>:not(.visually-hidden)</code> leaves the hidden spoken label alone.</p>
+                <p>The menu uses <code>position: absolute</code> so it can open over the page rather than pushing the hero down. <code>top: calc(100% - 1px)</code> places its top at the bottom edge of the navigation. <code>display: none</code> hides the links until JavaScript adds <code>is-open</code>; that second selector means “an element with both <code>nav-links</code> and <code>is-open</code> classes.”</p>
+            </section>
+
+            <section class="guide-section" id="gallery-code">
+                <div class="guide-section-heading">
+                    <span class="guide-number">08</span>
+                    <div><p class="eyebrow">Filter and enlarge the real pictures</p><h2>Gallery JavaScript</h2></div>
+                </div>
+                <h3>First, the filter buttons need matching values</h3>
+                <pre class="code-block"><code>&lt;button class="filter-button"
+        data-filter="all" aria-pressed="true"&gt;
+    All stories
+&lt;/button&gt;
+&lt;button class="filter-button"
+        data-filter="design" aria-pressed="false"&gt;
+    Design
+&lt;/button&gt;
+&lt;button class="filter-button"
+        data-filter="engineering" aria-pressed="false"&gt;
+    Engineering
+&lt;/button&gt;
+
+&lt;article class="collection-card"
+         data-category="design"&gt;...&lt;/article&gt;
+&lt;article class="collection-card"
+         data-category="engineering"&gt;...&lt;/article&gt;</code></pre>
+                <p>The button has a <code>data-filter</code> value; a card has a <code>data-category</code> value. The words must match for that card to remain visible. The “All stories” button is a special option that matches every card.</p>
+                <h3>This is the filter logic from site.js</h3>
+                <pre class="code-block"><code>const filterButtons =
+    document.querySelectorAll(".filter-button");
+const collectionCards =
+    document.querySelectorAll(".collection-card");
+
+if (filterButtons.length &amp;&amp; collectionCards.length) {
+    const emptyMessage =
+        document.querySelector(".empty-filter");
+
+    filterButtons.forEach((button) =&gt; {
+        button.addEventListener("click", () =&gt; {
+            const filter = button.dataset.filter;
+            let visibleCount = 0;
+
+            filterButtons.forEach((filterButton) =&gt; {
+                const isActive = filterButton === button;
+                filterButton.classList.toggle("is-active", isActive);
+                filterButton.setAttribute(
+                    "aria-pressed", String(isActive)
+                );
+            });
+
+            collectionCards.forEach((card) =&gt; {
+                const isVisible =
+                    filter === "all" ||
+                    card.dataset.category === filter;
+                card.hidden = !isVisible;
+                visibleCount += Number(isVisible);
+            });
+
+            emptyMessage.hidden = visibleCount &gt; 0;
+        });
+    });
+}</code></pre>
+                <div class="line-breakdown">
+                    <p><code>const</code> stores a reference that will not be reassigned. <code>querySelectorAll</code> returns all matching buttons/cards.</p>
+                    <p><code>&amp;&amp;</code> means “and.” The outer <code>if</code> prevents setup unless the current page has both filter buttons and cards. That lets the shared script load safely on other pages.</p>
+                    <p><code>button.dataset.filter</code> reads the clicked button's <code>data-filter</code> attribute.</p>
+                    <p><code>let visibleCount = 0</code> makes a counter we can increase as visible cards are found. <code>let</code> is used because this value changes.</p>
+                    <p><code>filterButton === button</code> checks whether the button in the loop is the same actual element as the clicked button. That one gets the active visual style and <code>aria-pressed="true"</code>.</p>
+                    <p><code>filter === "all" || ...</code> uses <code>||</code>, meaning “or.” Show the card if the filter is All, or if its category matches the chosen filter.</p>
+                    <p><code>card.hidden = !isVisible</code> uses the browser's built-in hidden state. A true <code>hidden</code> value removes the card from display.</p>
+                    <p><code>Number(isVisible)</code> turns true into 1 and false into 0, letting the visible-card count increase by the right amount.</p>
+                    <p>The empty-message line shows the message only when zero cards matched: <code>visibleCount &gt; 0</code> is false, so <code>hidden</code> becomes false.</p>
+                </div>
+                <h3>Then copy the right image into the dialog</h3>
+                <pre class="code-block"><code>const imageDialog =
+    document.querySelector(".image-dialog");
+
+if (imageDialog) {
+    document.querySelectorAll(".image-open").forEach((button) =&gt; {
+        button.addEventListener("click", () =&gt; {
+            const sourceImage = button.querySelector("img");
+            const cardTitle =
+                button.closest(".collection-card")
+                      .querySelector("h3");
+            const dialogImage =
+                imageDialog.querySelector("img");
+            const dialogTitle =
+                imageDialog.querySelector("p strong");
+
+            dialogImage.src = sourceImage.src;
+            dialogImage.alt = sourceImage.alt;
+            dialogTitle.textContent = cardTitle.textContent;
+            imageDialog.showModal();
+        });
+    });
+}</code></pre>
+                <div class="line-breakdown">
+                    <p><code>if (imageDialog)</code> checks the dialog exists before trying to use it. On pages without a gallery, there is no dialog and the code is skipped.</p>
+                    <p><code>button.querySelector("img")</code> finds the image inside the button that was clicked.</p>
+                    <p><code>closest(".collection-card")</code> walks upward from the button to its card. Then <code>querySelector("h3")</code> finds that card's title.</p>
+                    <p><code>.src</code> and <code>.alt</code> are image properties. Copying both means the modal uses the matching photo and its description.</p>
+                    <p><code>textContent</code> copies only text, not HTML markup. It safely puts the clicked card's heading into the dialog title.</p>
+                    <p><code>showModal()</code> opens the native dialog above the rest of the page.</p>
+                </div>
+                <h3>Close the dialog by button or backdrop</h3>
+                <pre class="code-block"><code>imageDialog.querySelector(".dialog-close").addEventListener("click", () =&gt; {
+    imageDialog.close();
+});
+
+imageDialog.addEventListener("click", (event) =&gt; {
+    if (event.target === imageDialog) {
+        imageDialog.close();
+    }
+});</code></pre>
+                <p>The close button calls the dialog's <code>close()</code> method. Clicking elsewhere in the dialog runs the second listener, but it closes only when <code>event.target</code> is the dialog itself. A click on the image or caption has a different target, so it does not accidentally close the viewer. The native dialog also closes with Escape.</p>
+            </section>
+
+            <section class="guide-section" id="contact-code">
+                <div class="guide-section-heading">
+                    <span class="guide-number">09</span>
+                    <div><p class="eyebrow">Read the form's actual behaviour</p><h2>Contact form JavaScript</h2></div>
+                </div>
+                <p>First the HTML fields must have labels, ids, and names. <code>for</code> must match the input's <code>id</code>. The <code>name</code> is the key JavaScript uses to retrieve its value.</p>
+                <pre class="code-block"><code>&lt;label for="email"&gt;Email address&lt;/label&gt;
+&lt;input id="email" name="email"
+       type="email" required&gt;
+
+&lt;label for="topic"&gt;What are we talking about?&lt;/label&gt;
+&lt;select id="topic" name="topic" required&gt;
+    &lt;option value="" selected disabled&gt;Pick a topic&lt;/option&gt;
+    &lt;option&gt;My dream garage&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;label for="message"&gt;Your message&lt;/label&gt;
+&lt;textarea id="message" name="message"
+          maxlength="600" required&gt;&lt;/textarea&gt;
+
+&lt;button type="submit"&gt;Prepare my message&lt;/button&gt;
+&lt;div id="form-feedback" role="status"
+     aria-live="polite" hidden&gt;&lt;/div&gt;</code></pre>
+                <p>The first option in the select has an empty value, so <code>required</code> forces the visitor to choose a real topic. The feedback container starts with <code>hidden</code>, and JavaScript reveals it after a valid submit.</p>
+                <h3>Character count and submit</h3>
+                <pre class="code-block"><code>const contactForm = document.querySelector("#garage-contact");
+
+if (contactForm) {
+    const messageField = contactForm.elements.message;
+    const messageCount = document.querySelector("#message-count");
+    const feedback = document.querySelector("#form-feedback");
+    const copyButton = document.querySelector("#copy-message");
+    let preparedMessage = "";
+
+    messageField.addEventListener("input", () =&gt; {
+        messageCount.textContent = String(messageField.value.length);
+    });
+
+    contactForm.addEventListener("submit", (event) =&gt; {
+        event.preventDefault();
+
+        if (!contactForm.reportValidity()) {
+            return;
+        }
+
+        const formData = new FormData(contactForm);
+        preparedMessage = [
+            `Name: ${formData.get("name")}`,
+            `Email: ${formData.get("email")}`,
+            `Topic: ${formData.get("topic")}`,
+            "",
+            String(formData.get("message"))
+        ].join("\n");
+
+        feedback.dataset.error = "false";
+        feedback.textContent =
+            "Your message is prepared below. It has not been sent because this site does not have a message service connected.";
+
+        const preview = document.createElement("pre");
+        preview.className = "prepared-message";
+        preview.textContent = preparedMessage;
+        feedback.append(preview);
+        feedback.hidden = false;
+        copyButton.hidden = false;
+    });
+
+    copyButton.addEventListener("click", async () =&gt; {
+        try {
+            await navigator.clipboard.writeText(preparedMessage);
+            feedback.dataset.error = "false";
+            feedback.firstChild.textContent =
+                "Copied to your clipboard. Your message has not been sent.";
+        } catch (error) {
+            feedback.dataset.error = "true";
+            feedback.firstChild.textContent =
+                "Clipboard access was blocked. You can select and copy the prepared message shown below.";
+        }
+    });
+}</code></pre>
+                <div class="line-breakdown">
+                    <p><code>querySelector("#garage-contact")</code> uses <code>#</code> because <code>garage-contact</code> is an id, not a class.</p>
+                    <p><code>contactForm.elements.message</code> finds the form field whose <code>name</code> is <code>message</code>.</p>
+                    <p>The <code>input</code> event fires as the visitor types. <code>value.length</code> counts characters and <code>textContent</code> updates the visible counter.</p>
+                    <p><code>submit</code> runs when the visitor submits. <code>preventDefault()</code> prevents the browser's normal form navigation.</p>
+                    <p><code>reportValidity()</code> asks the browser to check <code>required</code> and <code>type="email"</code>. If invalid, <code>return</code> stops the rest of the function.</p>
+                    <p><code>new FormData(contactForm)</code> collects the form values. <code>formData.get("email")</code> reads the field with <code>name="email"</code>.</p>
+                    <p>The square brackets create an array of message lines. <code>.join("\\n")</code> joins them with line breaks.</p>
+                    <p>This only creates and displays a preview. It does not send anything. Sending requires a backend or form service.</p>
+                </div>
+                <h3>Copying to clipboard and handling failure</h3>
+                <pre class="code-block"><code>copyButton.addEventListener("click", async () =&gt; {
+    try {
+        await navigator.clipboard.writeText(preparedMessage);
+                        feedback.dataset.error = "false";
+                        feedback.firstChild.textContent =
+                            "Copied to your clipboard. Your message has not been sent.";
+                    } catch (error) {
+                        feedback.dataset.error = "true";
+                        feedback.firstChild.textContent =
+                            "Clipboard access was blocked. You can select and copy the prepared message shown below.";
+                    }
+                });</code></pre>
+                                <p><code>async</code> lets this function wait for the clipboard operation. <code>await</code> pauses until the browser reports success or failure. <code>try</code> runs the successful path; <code>catch</code> handles a browser refusing clipboard access. <code>firstChild.textContent</code> replaces only the feedback's first text node, keeping the prepared message preview visible. <code>data-error</code> lets CSS distinguish success and failure.</p>
+                <div class="guide-callout"><strong>Important form limitation</strong><p>Do not paste private email passwords, secret API keys, or credentials into <code>site.js</code>. Browser code is visible to visitors. To truly send a form, connect it to a trusted service or server that handles submissions safely.</p></div>
+            </section>
+
+            <section class="guide-section" id="debugging">
+                <div class="guide-section-heading">
+                    <span class="guide-number">10</span>
+                    <div><p class="eyebrow">When the page does not look right</p><h2>Debugging this project</h2></div>
+                </div>
+                <div class="debug-grid">
+                    <article><h3>Image is broken</h3><p>Check the filename and folder. From an HTML file at the project root, use <code>assets/images/name.jpg</code>. Keep spaces and capitals exactly as they appear in the file's name.</p></article>
+                    <article><h3>CSS does nothing</h3><p>Check that the HTML has the class you selected. A CSS class selector starts with a dot: <code>.feature-copy</code>. An id selector starts with a hash: <code>#garage-contact</code>.</p></article>
+                    <article><h3>Menu won't open</h3><p>Check that the button has <code>aria-controls="primary-links"</code>, the list has <code>id="primary-links"</code>, and the page loads <code>site.js</code>.</p></article>
+                    <article><h3>Gallery filter hides everything</h3><p>Compare the filter button's <code>data-filter</code> with each card's <code>data-category</code>. For example, <code>engineering</code> must be spelled the same in both places.</p></article>
+                    <article><h3>Link goes nowhere</h3><p>For a different file, check the filename in <code>href</code>. For a section jump, the part after <code>#</code> must match an element's <code>id</code>.</p></article>
+                    <article><h3>JavaScript error</h3><p>Press F12 in the browser and open Console. Read the first red error. A message about <code>null</code> often means the script tried to use an element that is missing or has a misspelled selector.</p></article>
+                </div>
+                <h3>Safest way to experiment</h3>
+                <ol class="guide-steps">
+                    <li>Change one thing, then save with <kbd>Ctrl</kbd> + <kbd>S</kbd>.</li>
+                    <li>Refresh the browser and check the page.</li>
+                    <li>If it breaks, undo with <kbd>Ctrl</kbd> + <kbd>Z</kbd> and compare your edit to the example.</li>
+                    <li>Once it works, make the next change.</li>
+                </ol>
+                <div class="guide-next">
+                    <p class="eyebrow">Now you know what to look for</p>
+                    <h2>Open the project and<br>build one piece at a time.</h2>
+                    <a class="button-link button-dark" href="index.html">See the finished home page <span aria-hidden="true">↗</span></a>
+                </div>
+            </section>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <a class="footer-brand" href="index.html">BETA<span>MECHANIC</span></a>
+        <p>Made for the love of the drive.</p>
+        <nav aria-label="Footer navigation">
+            <a href="index.html">Home</a><a href="gallery.html">Gallery</a><a href="cars.html">Cars</a><a href="guide.html">Guide</a><a href="contact.html">Contact</a>
+        </nav>
+        <small>© <span data-year></span> Beta Mechanic. All roads lead somewhere.</small>
+    </footer>
+</body>
+</html>
